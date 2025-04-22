@@ -1,0 +1,86 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  .title_account {
+    font-family: "Gilroy" sans-serif;
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: -1%;
+    span {
+      font-weight: 700;
+    }
+  }
+  .wrapper_btn {
+    position: relative;
+    .account_btn {
+      width: 157px;
+      padding: 6px 12px;
+      height: 56px;
+      background-color: var(--color-darkblue);
+      border-radius: 30px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      .account_btn_text {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -1%;
+        text-align: center;
+        color: #fff;
+      }
+      .account_btn_img {
+        width: 44;
+        height: 44;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .account_btn_arrow {
+        width: 20;
+        height: 20;
+      }
+    }
+    .account_option {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      gap: 8px;
+      padding: 14px 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      position: absolute;
+      width: 157px;
+      .account_option_btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .account_option_btn_img{
+        display: flex;
+        align-items: center;
+        img{
+          width: 100%;
+        }
+      }
+      .account_option_btn_LogOut{
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 22.4px;
+        opacity: .6;
+      }
+      .account_option_btn_setting {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 22.4px;
+      }
+    }
+  }
+}

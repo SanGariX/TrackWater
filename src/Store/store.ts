@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import langSlice from "./Slices/Lang/langSlice"
+import mainSlice from "./Slices/Main/mainSlice"
 const store = configureStore({
   reducer: {
-    langSlice
+    mainSlice
   },
 });
 export type AppDispatch = typeof store.dispatch
