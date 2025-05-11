@@ -35,11 +35,7 @@ const SignUp = () => {
           message: "message_enter_acc",
         })
       );
-      dispatch(
-        changeStatus({
-          enterAcc: true,
-        })
-      );
+
       for (let i = 1; ; i += 1) {
         if (localStorage.getItem(`user_id=${i}`) === null) {
           localStorage.setItem(
@@ -47,10 +43,20 @@ const SignUp = () => {
             JSON.stringify({
               email: data.email,
               password: data.password,
+              name: `user_id=${i}`,
             })
           );
-          navigate("/user")
-          return
+          localStorage.setItem("user", `user_id=${i}`);
+          dispatch(
+            changeStatus({
+              enterAcc: true,
+              name: `user_id=${i}`,
+              email: data.email,
+              password: data.password,
+            })
+          );
+          navigate("/user");
+          return;
         } else {
           continue;
         }
@@ -75,8 +81,8 @@ const SignUp = () => {
   }, [stateError]);
   const handleOnClick = (type: string) => {
     setStateError("");
-    if(!type) return 
-    navigate(type)
+    if (!type) return;
+    navigate(type);
   };
   return (
     <div className="wrapper">

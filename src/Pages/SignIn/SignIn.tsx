@@ -55,8 +55,12 @@ const SignIn = () => {
         dispatch(
           changeStatus({
             enterAcc: true,
+            name: object_acc.name,
+            email: data.email,
+            password: data.password,
           })
         );
+        localStorage.setItem("user", `user_id=${i}`);
         navigate("/user");
         return;
       }

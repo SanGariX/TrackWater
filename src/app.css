@@ -1,12 +1,12 @@
-body{
+body {
   position: relative;
 }
-.content{
+.content {
   transform: translateY(40px);
   opacity: 0;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
-.content.loaded{
+.content.loaded {
   opacity: 1;
   transform: translateY(0px);
 }
@@ -23,4 +23,19 @@ body{
   align-items: center;
   justify-content: center;
   gap: 30px;
+}
+.hiddenElement {
+  position: absolute;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+.swiper-horizontal > .swiper-scrollbar,
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  height: 8px;
+}
+.swiper-scrollbar-drag {
+  background-color: #323f47;
+  height: 8px;
 }

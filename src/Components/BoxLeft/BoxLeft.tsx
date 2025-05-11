@@ -5,27 +5,20 @@ import Title from "../Title/Title";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Store/store";
-import { useEffect } from "react";
 import { changeStatus } from "../../Store/Slices/Main/mainSlice";
 const BoxLeft = () => {
   const { t } = useTranslation();
   const { enterAcc } = useSelector((state: RootState) => state.mainSlice);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const local = localStorage.getItem("enterAcc");
-    if (!!local) {
-      dispatch(
-        changeStatus({
-          enterAcc: JSON.parse(local),
-        })
-      );
-    }
-  }, []);
   const handleClick = () => {
     localStorage.removeItem("enterAcc");
+    localStorage.removeItem("user");
     dispatch(
-      changeStatus({
+      changeStatus( {
         enterAcc: false,
+        name: "",
+        email: "",
+        password: ""
       })
     );
   };
