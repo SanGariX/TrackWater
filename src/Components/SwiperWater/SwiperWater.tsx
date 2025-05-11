@@ -4,13 +4,13 @@ import changeImage from "../../assets/change.svg";
 import deleteImage from "../../assets/delete.svg";
 import plus from "../../assets/btn_plus.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { openMenu } from "../../Store/Slices/Main/mainSlice";
+import "swiper/css";
+import "swiper/css/scrollbar";
 const SwiperWater = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
