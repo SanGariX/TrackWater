@@ -63,5 +63,6 @@
   "addWater_valueUsed": "Enter the value of the water used:",
   "addWater_save": "Save",
   "editWater_title": "Edit the entered amount of water",
-  "editWater_corect": "Correct entered data:"
+  "editWater_corect": "Correct entered data:",
+  "addWater_message": "Add water"
 }

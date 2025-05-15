@@ -41,18 +41,26 @@ const SignUp = () => {
           localStorage.setItem(
             `user_id=${i}`,
             JSON.stringify({
+              id: `user_id=${i}`,
               email: data.email,
               password: data.password,
-              name: `user_id=${i}`,
+              name: "",
+              weight: 0,
+              gender: "",
+              water: [],
             })
           );
           localStorage.setItem("user", `user_id=${i}`);
           dispatch(
             changeStatus({
               enterAcc: true,
-              name: `user_id=${i}`,
+              id: `user_id=${i}`,
               email: data.email,
               password: data.password,
+              name: "",
+              weight: 0,
+              gender: "",
+              water: [],
             })
           );
           navigate("/user");

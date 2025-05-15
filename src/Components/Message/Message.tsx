@@ -8,6 +8,7 @@ type MessageType = {
 }
 const Message: FC<{ type: MessageType }> = ({ type: {error, statusMessage, message} }) => {
   const { t } = useTranslation();
+  console.log(statusMessage)
   if(statusMessage === "error" && !!error){
     return (
        <div className={`${s.message} ${s.error}`}>

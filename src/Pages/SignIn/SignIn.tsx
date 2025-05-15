@@ -55,9 +55,13 @@ const SignIn = () => {
         dispatch(
           changeStatus({
             enterAcc: true,
+            id: object_acc.id,
             name: object_acc.name,
-            email: data.email,
-            password: data.password,
+            weight: object_acc.weight,
+            gender: object_acc.gender,
+            email: object_acc.email,
+            password: object_acc.password,
+            water: object_acc.water,
           })
         );
         localStorage.setItem("user", `user_id=${i}`);

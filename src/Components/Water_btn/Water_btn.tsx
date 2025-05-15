@@ -3,7 +3,7 @@ import plus from "../../assets/plus.png";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Store/store";
-import { openMenu } from "../../Store/Slices/Main/mainSlice";
+import { newDate, openMenu } from "../../Store/Slices/Main/mainSlice";
 const Water_btn = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
@@ -11,6 +11,7 @@ const Water_btn = () => {
     <button
       onClick={() => {
         dispatch(openMenu({ menuOpen: "addWater" }));
+        dispatch(newDate())
       }}
       className={s.water_btn}
     >

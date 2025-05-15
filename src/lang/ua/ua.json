@@ -63,5 +63,6 @@
   "addWater_valueUsed": "Введіть кількість випитої води:",
   "addWater_save": "Зберегти",
   "editWater_title": "Змінити кількість спожитої води",
-  "editWater_corect": "Змінити ведені дані"
+  "editWater_corect": "Змінити ведені дані",
+  "addWater_message": "Добавлена вода"
 }

@@ -3,20 +3,22 @@ import people from "../../assets/man.png";
 import arrow from "../../assets/arrow_down.png";
 import option from "../../assets/settings.svg";
 import LogOut from "../../assets/log-out.svg";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../Store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../Store/store";
 import { openMenu } from "../../Store/Slices/Main/mainSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 const UserAccount = () => {
+  const { name } = useSelector(
+    (state: RootState) => state.mainSlice.account
+  );
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
-
   return (
     <div className={s.wrapper}>
       <h2 className={s.title_account}>
-        {t("userAccountHello")}, <span>{"Nadia!"}</span>
+        {t("userAccountHello")}, <span>{!!name ? name : "Guest"}</span>
       </h2>
       <div className={s.wrapper_btn}>
         <button

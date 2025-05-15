@@ -1,18 +1,63 @@
 import s from "./AddWater.module.scss";
 import close from "../../assets/x.svg";
-import { useDispatch } from "react-redux";
-import { openMenu } from "../../Store/Slices/Main/mainSlice";
-import minus from "../../assets/minus_change_water-btn.svg";
-import plus from "../../assets/plus_change_water-btn.svg";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addAmountWater,
+  changeMessage,
+  openMenu,
+} from "../../Store/Slices/Main/mainSlice";
 import { useTranslation } from "react-i18next";
+import { RootState } from "../../Store/store";
+import { useForm } from "react-hook-form";
+import constantJSON from "../../Helpers/const.json";
 const AddWater = () => {
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { date } = useSelector((state: RootState) => state.mainSlice);
+  const HourValue = date.split(":")[3].padStart(2, "0");
+  const MinutesValue = date.split(":")[4].padStart(2, "0");
+  const timeValue = HourValue + ":" + MinutesValue;
+  const onSubmit = (data: any) => {
+    const dateDay =
+      date.split(":")[0] + ":" + date.split(":")[1] + ":" + date.split(":")[2];
+    const id = Date.now();
+    const result = {
+      ...data,
+      date: dateDay,
+      id: id,
+    };
+    dispatch(addAmountWater(result));
+    dispatch(
+      openMenu({
+        menuOpen: "remove",
+      })
+    );
+    dispatch(
+      changeMessage({
+        error: "",
+        statusMessage: "",
+      })
+    );
+    dispatch(
+      changeMessage({
+        message: "addWater_message",
+        statusMessage: "message",
+      })
+    );
+    setTimeout(() => {
+      dispatch(
+        changeMessage({
+          error: "",
+          statusMessage: "",
+        })
+      );
+    }, Number(constantJSON.timeAnimationCSS) * 1000);
+  };
   return (
     <div className={s.wrapper}>
-      <div className={s.water_inner}>
-        <h3 className={s.title}>{t("addWater_title")}</h3>
-        <button
+      <form className={s.water_inner} onSubmit={handleSubmit(onSubmit)}>
+        <div
           onClick={() => {
             dispatch(
               openMenu({
@@ -23,38 +68,31 @@ const AddWater = () => {
           className={s.close_btn}
         >
           <img src={close} alt="close" />
-        </button>
+        </div>
+        <h3 className={s.title}>{t("addWater_title")}</h3>
         <strong className={s.content_inner_strong}>
           {t("addWater_choose")}
         </strong>
-        <div className={s.content_inner}>
-          <p className={s.content_inner_text}>{t("addWater_amount")}</p>
-          <div className={s.content_inner_btn}>
-            <button className={s.content_inner_btn_change}>
-              <img src={minus} alt="minus" />
-            </button>
-            <div className={s.content_inner_btn_value}>
-              <p className={s.content_inner_btn_value_text}>
-                50{t("addWater_amount_value")}
-              </p>
-            </div>
-            <button className={s.content_inner_btn_change}>
-              <img src={plus} alt="plus" />
-            </button>
-          </div>
-        </div>
         <div className={s.content_input}>
           <p className={s.content_input_text}>{t("addWater_time")}</p>
-          <input defaultValue={"7:00"} className={s.content_input_input} type="text" />
+          <input
+            defaultValue={timeValue}
+            className={s.content_input_input}
+            type="text"
+            {...register("time")}
+          />
         </div>
         <div className={s.content_input}>
           <p className={s.content_input_text_bold}>{t("addWater_valueUsed")}</p>
-          <input defaultValue={"50"} className={s.content_input_input} type="text" />
+          <input
+            defaultValue={"50"}
+            className={s.content_input_input}
+            type="text"
+            {...register("valueWater")}
+          />
         </div>
-        <button className={s.content_btn}>
-          {t("addWater_save")}
-        </button>
-      </div>
+        <button className={s.content_btn}>{t("addWater_save")}</button>
+      </form>
     </div>
   );
 };
