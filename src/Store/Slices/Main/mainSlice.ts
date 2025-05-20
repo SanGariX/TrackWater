@@ -20,6 +20,12 @@ type initialStateType = {
   };
   readonly date: string;
   readonly time: string;
+  readonly currentEdit: {
+    id: number;
+    date: string;
+    time: string;
+    valueWater: string;
+  };
 };
 type changeMessageTypePayload = {
   error?: string;
@@ -39,6 +45,7 @@ type changeStatusTypePayload = {
 type menuOpenTypePayload = {
   readonly menuOpen: "setting" | "addWater" | "remove" | "editWater" | "exit";
 };
+
 const initialState: initialStateType = {
   // message
   error: "",
@@ -62,6 +69,12 @@ const initialState: initialStateType = {
   },
   date: "",
   time: "",
+  currentEdit: {
+    id: 0,
+    date: "",
+    time: "",
+    valueWater: "",
+  },
 };
 const mainSlice = createSlice({
   name: "mainSlice",
@@ -128,6 +141,12 @@ const mainSlice = createSlice({
       const hours = date.getHours();
       const minut = date.getMinutes();
       state.date = `${year}:${month}:${day}:${hours}:${minut}`;
+    },
+    newTime: (state) => {
+      const date = new Date();
+      const month = date.getMonth();
+      const day = date.getDate();
+      const year = date.getFullYear();
       state.time = `${year}:${month}:${day}`;
     },
     addAmountWater: (state, action) => {
@@ -135,6 +154,22 @@ const mainSlice = createSlice({
       const user = localStorage.getItem("user");
       if (!user) return;
       localStorage.setItem(user, JSON.stringify(state.account));
+    },
+    EditItemWater: (state, action) => {
+      state.currentEdit = action.payload;
+      const currentWater = state.account.water.map((item) => {
+        if (item.id === state.currentEdit.id) {
+          return state.currentEdit;
+        }
+        return item;
+      });
+      state.account.water = currentWater;
+      localStorage.setItem(state.account.id, JSON.stringify(state.account));
+    },
+    deleteItemWater: (state, action) => {
+      const currentWater = state.account.water.filter((item) => item.id !== action.payload.id);
+      state.account.water = currentWater
+      localStorage.setItem(state.account.id, JSON.stringify(state.account));
     },
   },
 });
@@ -146,4 +181,7 @@ export const {
   exitAccount,
   newDate,
   addAmountWater,
+  newTime,
+  EditItemWater,
+  deleteItemWater
 } = mainSlice.actions;

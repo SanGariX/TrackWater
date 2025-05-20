@@ -35,12 +35,6 @@ const AddWater = () => {
     );
     dispatch(
       changeMessage({
-        error: "",
-        statusMessage: "",
-      })
-    );
-    dispatch(
-      changeMessage({
         message: "addWater_message",
         statusMessage: "message",
       })

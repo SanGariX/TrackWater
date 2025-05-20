@@ -1,0 +1,41 @@
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.title {
+  font-family: "Poppins" sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: -1%;
+  color: var(--color-darkblue);
+}
+.inner_btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+.inner_btns_month {
+  width: 20px;
+}
+.inner_btns_month > img{
+  width: 100%;
+}
+.inner_text {
+  font-family: "Poppins" sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
+  color: var(--color-darkblue);
+}
+.inner_btns_type{
+  width: 20px;
+}
+.inner_btns_type > img{
+  width: 100%;
+}

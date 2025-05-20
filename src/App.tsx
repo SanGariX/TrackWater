@@ -6,7 +6,7 @@ import "./app.css";
 import { RootState } from "./Store/store";
 import constantJSON from "./Helpers/const.json";
 import { useEffect } from "react";
-import { changeStatus, newDate } from "./Store/Slices/Main/mainSlice";
+import { changeStatus, newDate, newTime } from "./Store/Slices/Main/mainSlice";
 import { useNavigate } from "react-router-dom";
 const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ const App = () => {
       })
     );
     dispatch(newDate())
+    dispatch(newTime())
     navigate("/user");
   }, []);
   return (

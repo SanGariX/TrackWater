@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { changeMessage, changeStatus } from "../../Store/Slices/Main/mainSlice";
 import { useEffectTypeError } from "../../Helpers/typeMessage";
+import constantJSON from "../../Helpers/const.json";
 type UseFormType = {
   email: string;
   password: string | number;
@@ -35,7 +36,14 @@ const SignUp = () => {
           message: "message_enter_acc",
         })
       );
-
+      setTimeout(() => {
+        dispatch(
+          changeMessage({
+            error: "",
+            statusMessage: "",
+          })
+        );
+      }, Number(constantJSON.timeAnimationCSS) * 1000);
       for (let i = 1; ; i += 1) {
         if (localStorage.getItem(`user_id=${i}`) === null) {
           localStorage.setItem(
