@@ -10,15 +10,23 @@ import { newDate, openMenu } from "../../Store/Slices/Main/mainSlice";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import SwiperItem from "../SwiperItem/SwiperItem";
+import { useEffect, useState } from "react";
 const SwiperWater = () => {
   const { account, time: reduxTime } = useSelector(
     (state: RootState) => state.mainSlice
   );
-  const filtered = account.water.filter(
-    ({ date }) => {
-      return String(date) === String(reduxTime)
-    }
+  const [filtered, setFiltered] = useState(
+    account.water.filter(({ date }) => {
+      return String(date) === String(reduxTime);
+    })
   );
+  useEffect(() => {
+    setFiltered(
+      account.water.filter(({ date }) => {
+        return String(date) === String(reduxTime);
+      })
+    );
+  }, [account.water]);
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   return (

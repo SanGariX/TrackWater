@@ -117,7 +117,7 @@ const mainSlice = createSlice({
         sports: sports,
       };
       const time = new Date();
-      state.time = `${time.getFullYear()}:${time.getMonth()}:${time.getDay()}`;
+      state.time = `${time.getFullYear()}:${time.getMonth()}:${time.getDate()}`;
       localStorage.setItem("enterAcc", `${action.payload.enterAcc}`);
     },
     openMenu: (state, action: PayloadAction<menuOpenTypePayload>) => {

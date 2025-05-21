@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { useEffectTypeError } from "../../Helpers/typeMessage";
 import { changeMessage, changeStatus } from "../../Store/Slices/Main/mainSlice";
-import constantJSON from "../../Helpers/const.json"
+import constantJSON from "../../Helpers/const.json";
 type UseFormType = {
   email: string;
   password: string | number;
@@ -72,7 +72,7 @@ const SignIn = () => {
             password: object_acc.password,
             water: object_acc.water,
             ava: object_acc.ava,
-            sports: object_acc.sports
+            sports: object_acc.sports,
           })
         );
         localStorage.setItem("user", `user_id=${i}`);

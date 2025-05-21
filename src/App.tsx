@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const enter = localStorage.getItem("user");
     if (!enter) {
-      navigate("/");
+      // navigate("/");
       return;
     }
     const user = localStorage.getItem(enter);
@@ -37,7 +37,7 @@ const App = () => {
     );
     dispatch(newDate());
     dispatch(newTime());
-    navigate("/user");
+    // navigate("/user");
   }, []);
 
   return (
