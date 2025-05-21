@@ -31,12 +31,15 @@ const App = () => {
         water: userObject.water,
         gender: userObject.gender,
         weight: userObject.weight,
+        ava: userObject.ava,
+        sports: userObject.sports,
       })
     );
-    dispatch(newDate())
-    dispatch(newTime())
+    dispatch(newDate());
+    dispatch(newTime());
     navigate("/user");
   }, []);
+
   return (
     <div
       className="wrapper"

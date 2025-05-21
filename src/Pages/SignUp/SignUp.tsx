@@ -56,6 +56,8 @@ const SignUp = () => {
               weight: 0,
               gender: "",
               water: [],
+              ava: "",
+              sports: "",
             })
           );
           localStorage.setItem("user", `user_id=${i}`);
@@ -69,6 +71,8 @@ const SignUp = () => {
               weight: 0,
               gender: "",
               water: [],
+              ava: "",
+              sports: "",
             })
           );
           navigate("/user");

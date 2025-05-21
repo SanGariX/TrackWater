@@ -17,6 +17,8 @@ type initialStateType = {
     readonly weight: number;
     readonly gender: string;
     readonly water: any[];
+    readonly sports: any;
+    readonly ava: any;
   };
   readonly date: string;
   readonly time: string;
@@ -41,6 +43,8 @@ type changeStatusTypePayload = {
   readonly weight: number;
   readonly gender: string;
   readonly water: string[] | number[];
+  readonly ava: any;
+  readonly sports: any;
 };
 type menuOpenTypePayload = {
   readonly menuOpen: "setting" | "addWater" | "remove" | "editWater" | "exit";
@@ -66,6 +70,8 @@ const initialState: initialStateType = {
     water: [],
     gender: "",
     weight: 0,
+    sports: "",
+    ava: "",
   },
   date: "",
   time: "",
@@ -86,8 +92,18 @@ const mainSlice = createSlice({
       state.message = action.payload.message;
     },
     changeStatus: (state, action: PayloadAction<changeStatusTypePayload>) => {
-      const { email, gender, id, enterAcc, name, password, weight, water } =
-        action.payload;
+      const {
+        email,
+        gender,
+        id,
+        enterAcc,
+        name,
+        password,
+        weight,
+        water,
+        ava,
+        sports,
+      } = action.payload;
       state.enterAcc = enterAcc;
       state.account = {
         email: email,
@@ -97,6 +113,8 @@ const mainSlice = createSlice({
         password: password,
         weight: weight,
         water: water,
+        ava: ava,
+        sports: sports,
       };
       const time = new Date();
       state.time = `${time.getFullYear()}:${time.getMonth()}:${time.getDay()}`;
@@ -129,6 +147,8 @@ const mainSlice = createSlice({
         water: [],
         gender: "",
         weight: 0,
+        ava: "",
+        sports: "",
       };
       localStorage.removeItem("enterAcc");
       localStorage.removeItem("user");
@@ -167,8 +187,18 @@ const mainSlice = createSlice({
       localStorage.setItem(state.account.id, JSON.stringify(state.account));
     },
     deleteItemWater: (state, action) => {
-      const currentWater = state.account.water.filter((item) => item.id !== action.payload.id);
-      state.account.water = currentWater
+      const currentWater = state.account.water.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.account.water = currentWater;
+      localStorage.setItem(state.account.id, JSON.stringify(state.account));
+    },
+    settingAcc: (state, action) => {
+      state.account.gender = action.payload.gender;
+      state.account.email = action.payload.email;
+      state.account.name = action.payload.name;
+      state.account.sports = action.payload.sports;
+      state.account.weight = action.payload.weight;
       localStorage.setItem(state.account.id, JSON.stringify(state.account));
     },
   },
@@ -183,5 +213,6 @@ export const {
   addAmountWater,
   newTime,
   EditItemWater,
-  deleteItemWater
+  deleteItemWater,
+  settingAcc,
 } = mainSlice.actions;

@@ -71,6 +71,8 @@ const SignIn = () => {
             email: object_acc.email,
             password: object_acc.password,
             water: object_acc.water,
+            ava: object_acc.ava,
+            sports: object_acc.sports
           })
         );
         localStorage.setItem("user", `user_id=${i}`);

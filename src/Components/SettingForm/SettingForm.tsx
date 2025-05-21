@@ -1,9 +1,31 @@
 import { useTranslation } from "react-i18next";
 import s from "./SettingForm.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../Store/store";
+import { settingAcc } from "../../Store/Slices/Main/mainSlice";
 const SettingForm = () => {
+  const { account } = useSelector((state: RootState) => state.mainSlice);
   const { t } = useTranslation();
-  const [radio, setRadio] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
+  const [radio, setRadio] = useState<string>(account.gender);
+  const [input, setInput] = useState({
+    name: account.name,
+    email: account.email,
+    sports: account.sports,
+    weight: account.weight,
+  });
+  useEffect(() => {
+    dispatch(
+      settingAcc({
+        gender: radio,
+        email: input.email,
+        name: input.name,
+        sports: input.sports,
+        weight: input.weight,
+      })
+    );
+  }, [input, radio]);
   return (
     <>
       <form className={s.form}>
@@ -25,7 +47,7 @@ const SettingForm = () => {
                   id="Woman"
                   type="radio"
                   name="gender"
-                  value={"Woman"}
+                  defaultValue={"Woman"}
                 />
                 <span className={s.form_input_box_radio_text}>
                   {t("gender_radio_women")}
@@ -45,7 +67,7 @@ const SettingForm = () => {
                   id="Man"
                   type="radio"
                   name="gender"
-                  value={"Man"}
+                  defaultValue={"Man"}
                 />
                 <span className={s.form_input_box_radio_text}>
                   {t("gender_radio_man")}
@@ -60,15 +82,23 @@ const SettingForm = () => {
               className={s.form_input_box_input}
               type="text"
               name="name"
+              defaultValue={account.name}
+              onChange={(evt) => {
+                setInput({ ...input, name: evt.target.value });
+              }}
             />
           </div>
           <div className={s.form_input_box}>
             <span className={s.form_input_box_span}>{t("setting_email")}</span>
             <input
+              onChange={(evt) => {
+                setInput({ ...input, email: evt.target.value });
+              }}
+              defaultValue={account.email}
               placeholder={t("setting_email")}
               className={s.form_input_box_input}
               type="text"
-              name="name"
+              name="email"
             />
           </div>
         </div>
@@ -78,6 +108,10 @@ const SettingForm = () => {
               {t("setting_weight")}
             </span>
             <input
+              onChange={(evt) => {
+                setInput({ ...input, weight: Number(evt.target.value) });
+              }}
+              defaultValue={account.weight}
               placeholder="0"
               className={s.form_input_box_input}
               type="text"
@@ -89,17 +123,23 @@ const SettingForm = () => {
               {t("setting_participation")}
             </span>
             <input
-              placeholder="0"
+              onChange={(evt) => {
+                setInput({ ...input, sports: evt.target.value });
+              }}
+              defaultValue={account.sports}
+              placeholder="2.20"
               className={`${s.form_input_box_input} ${s.form_input_box_input_right}`}
               type="text"
-              name="weight"
+              name="sports"
             />
           </div>
         </div>
       </form>
       <div className={s.setting_bottom}>
         <div className={s.form_box_daily_norma}>
-          <h4 className={`${s.form_input_box_span} ${s.center}`}>{t("dayly_title")}</h4>
+          <h4 className={`${s.form_input_box_span} ${s.center}`}>
+            {t("dayly_title")}
+          </h4>
           <div className={s.form_box_daily_norma_inner}>
             <div className={s.daily_norma_inner_item}>
               <div className={s.daily_norma_inner_item_title}>
