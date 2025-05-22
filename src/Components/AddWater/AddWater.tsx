@@ -14,13 +14,14 @@ const AddWater = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { date } = useSelector((state: RootState) => state.mainSlice);
-  const HourValue = date.split(":")[3].padStart(2, "0");
-  const MinutesValue = date.split(":")[4].padStart(2, "0");
+  const { time } = useSelector((state: RootState) => state.mainSlice);
+  const date = new Date();
+  const HourValue = String(date.getHours()).padStart(2, "0");
+  const MinutesValue = String(date.getMinutes()).padStart(2, "0");
   const timeValue = HourValue + ":" + MinutesValue;
   const onSubmit = (data: any) => {
-    const dateDay =
-      date.split(":")[0] + ":" + date.split(":")[1] + ":" + date.split(":")[2];
+    console.log(time)
+    const dateDay = time;
     const id = Date.now();
     const result = {
       ...data,

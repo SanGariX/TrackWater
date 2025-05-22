@@ -26,7 +26,7 @@ const SwiperWater = () => {
         return String(date) === String(reduxTime);
       })
     );
-  }, [account.water]);
+  }, [account.water, reduxTime]);
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   return (

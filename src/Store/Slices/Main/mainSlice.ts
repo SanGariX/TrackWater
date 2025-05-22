@@ -201,6 +201,9 @@ const mainSlice = createSlice({
       state.account.weight = action.payload.weight;
       localStorage.setItem(state.account.id, JSON.stringify(state.account));
     },
+    upDateTime: (state, {payload})=>{
+      state.time = `${payload.year}:${payload.month}:${payload.day}`
+    }
   },
 });
 export default mainSlice.reducer;
@@ -215,4 +218,5 @@ export const {
   EditItemWater,
   deleteItemWater,
   settingAcc,
+  upDateTime
 } = mainSlice.actions;
