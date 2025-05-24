@@ -10,9 +10,10 @@ import dayliNorma from "../../Helpers/dailyNorm";
 const Progress_bar = () => {
   const { t } = useTranslation();
   const [resultBar, setResultBar] = useState(0);
-  const { account, time: reduxTime } = useSelector(
-    (state: RootState) => state.mainSlice
-  );
+  const { account, date } = useSelector((state: RootState) => state.mainSlice);
+  const reduxTime = `${date.split(":")[0]}:${date.split(":")[1]}:${
+    date.split(":")[2]
+  }`;
   const progresStyle = (procent: number) => css`
     width: ${procent}%;
   `;
@@ -30,7 +31,7 @@ const Progress_bar = () => {
       <h4 className={s.progress_bar_title}>{t("progressBar_title")}</h4>
       <div className={s.progress_bar}>
         <div
-          css={progresStyle(procentsBar(dayliNorma(account), resultBar/1000))}
+          css={progresStyle(procentsBar(dayliNorma(account), resultBar / 1000))}
           className={s.progress_bar_dote}
         ></div>
       </div>

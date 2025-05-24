@@ -1,0 +1,43 @@
+.item p {
+  font-family: "Poppins" sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
+}
+.item {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  cursor: pointer;
+}
+.item.have {
+  background-color: #323f4733;
+}
+.item.critical {
+  background-color: #d6a04a33;
+}
+.item.active {
+  background-color: #323f47;
+}
+.item.active > p {
+  color: #9be1a0;
+}
+.procent {
+  display: block;
+  font-family: "Poppins" sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
+  color: gray;
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
