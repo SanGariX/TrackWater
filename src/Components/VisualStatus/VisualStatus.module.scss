@@ -1,8 +1,11 @@
+.wapper {
+  margin-top: 20px;
+}
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .title {
   font-family: "Poppins" sans-serif;
@@ -21,7 +24,11 @@
 .inner_btns_month {
   width: 20px;
 }
-.inner_btns_month > img{
+.inner_btns_month.disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+.inner_btns_month > img {
   width: 100%;
 }
 .inner_text {
@@ -34,9 +41,9 @@
   color: var(--color-darkblue);
   width: 150px;
 }
-.inner_btns_type{
+.inner_btns_type {
   width: 20px;
 }
-.inner_btns_type > img{
+.inner_btns_type > img {
   width: 100%;
 }

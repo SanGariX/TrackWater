@@ -20,7 +20,6 @@ const AddWater = () => {
   const MinutesValue = String(date.getMinutes()).padStart(2, "0");
   const timeValue = HourValue + ":" + MinutesValue;
   const onSubmit = (data: any) => {
-    console.log(time)
     const dateDay = time;
     const id = Date.now();
     const result = {

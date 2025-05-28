@@ -65,5 +65,6 @@
   "editWater_title": "Змінити кількість спожитої води",
   "editWater_corect": "Змінити ведені дані",
   "addWater_message": "Добавлена вода",
-    "message_editWater": "Редагована вода"
+  "message_editWater": "Редагована вода",
+  "visual_month": "Місяць"
 }

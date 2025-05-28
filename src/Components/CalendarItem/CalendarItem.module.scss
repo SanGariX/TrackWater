@@ -22,19 +22,25 @@
 .item.critical {
   background-color: #d6a04a33;
 }
+.item.date{
+  background-color: rgb(139, 213, 235) !important;
+  color: black !important;
+}
+.item.disabled{
+  cursor:auto;
+}
 .item.active {
-  background-color: #323f47;
+  background-color: #323f47 !important;
 }
 .item.active > p {
   color: #9be1a0;
 }
 .procent {
   display: block;
-  font-family: "Poppins" sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  letter-spacing: -1%;
   text-align: center;
   color: gray;
   width: 100%;

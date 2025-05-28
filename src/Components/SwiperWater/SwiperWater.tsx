@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import SwiperItem from "../SwiperItem/SwiperItem";
 import { useEffect, useState } from "react";
+import monthSearch from "../../Helpers/monthArray";
 const SwiperWater = () => {
   const { account, time: reduxTime } = useSelector(
     (state: RootState) => state.mainSlice
@@ -33,7 +34,11 @@ const SwiperWater = () => {
     <div className={s.wrapper}>
       <div className={s.content}>
         <div className={s.title_inner}>
-          <h3 className={s.title}>{t("swiper_today")}</h3>
+          {/* {t("swiper_today")} */}
+          <h3 className={s.title}>
+            {monthSearch(Number(reduxTime.split(":")[1]))},{" "}
+            {reduxTime.split(":")[2]}
+          </h3>
           <button
             onClick={() => {
               dispatch(openMenu({ menuOpen: "addWater" }));

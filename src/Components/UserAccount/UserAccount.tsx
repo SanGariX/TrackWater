@@ -9,16 +9,43 @@ import { openMenu } from "../../Store/Slices/Main/mainSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 const UserAccount = () => {
-  const { name } = useSelector(
+  const { name, ava } = useSelector(
     (state: RootState) => state.mainSlice.account
   );
   const [open, setOpen] = useState(false);
+  const [openName, setOpenName] = useState(false);
+  let nameValue: string = name;
+  if (name.length > 10) {
+    nameValue = name.slice(0, 10) + "..."; // Truncate name if it's too long
+  }
   const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
+  const handleMouse = (boolean: boolean) => {
+    if (name.length > 10) {
+      if (boolean) {
+        setOpenName(boolean);
+      } else {
+        setOpenName(boolean);
+      }
+    }
+  };
   return (
     <div className={s.wrapper}>
-      <h2 className={s.title_account}>
-        {t("userAccountHello")}, <span>{!!name ? name : "Guest"}</span>
+      <h2
+        onMouseEnter={() => {
+          handleMouse(true);
+        }}
+        onMouseLeave={() => {
+          handleMouse(false);
+        }}
+        className={s.title_account}
+      >
+        {t("userAccountHello")}, <span>{!!name ? nameValue : "Guest"}</span>
+        {openName && (
+          <div className={s.openName}>
+            бугага, переграв і унічтожив, тримай: {name}
+          </div>
+        )}
       </h2>
       <div className={s.wrapper_btn}>
         <button
@@ -27,9 +54,9 @@ const UserAccount = () => {
           }}
           className={s.account_btn}
         >
-          <span className={s.account_btn_text}>{"Nadia"}</span>
+          <span className={s.account_btn_text}>{name.slice(0, 3) + "..."}</span>
           <span className={s.account_btn_img}>
-            <img src={people} alt="avatar" />
+            <img src={!!ava ? ava : people} alt="avatar" />
           </span>
           <span className={s.account_btn_arrow}>
             <img

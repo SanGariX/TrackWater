@@ -7,8 +7,11 @@ import { RootState } from "../../Store/store";
 import monthSearch from "../../Helpers/monthArray";
 import { useEffect, useState } from "react";
 import Calendar from "../Calendar/Calendar";
+import disabledMonthBtn from "../../Helpers/disabledMonthBtn";
+import { useTranslation } from "react-i18next";
 const VisualStatus = () => {
-  const { time } = useSelector((state: RootState) => state.mainSlice);
+  const {t} = useTranslation()
+  const { time, date } = useSelector((state: RootState) => state.mainSlice);
   const [targetTime, setTargetTime] = useState(time);
   useEffect(() => {
     setTargetTime(time);
@@ -44,7 +47,7 @@ const VisualStatus = () => {
   return (
     <div className={s.wapper}>
       <div className={s.inner}>
-        <h3 className={s.title}>Month</h3>
+        <h3 className={s.title}>{t("visual_month")}</h3>
         <div className={s.inner_btns}>
           <button
             onClick={() => {
@@ -55,13 +58,17 @@ const VisualStatus = () => {
             <img src={left_arrow} alt="left arrow" />
           </button>
           <p className={s.inner_text}>
-            {monthSearch(Number(targetTime.split(":")[1]))}, {targetTime.split(":")[0]}
+            {monthSearch(Number(targetTime.split(":")[1]))},{" "}
+            {targetTime.split(":")[0]}
           </p>
           <button
             onClick={() => {
               dispatchTime(true);
             }}
-            className={s.inner_btns_month}
+            className={`${s.inner_btns_month} ${
+              disabledMonthBtn(date, targetTime) ? s.disabled : ""
+            }`}
+            disabled={disabledMonthBtn(date, targetTime)}
           >
             <img src={right_arrow} alt="right arrow" />
           </button>

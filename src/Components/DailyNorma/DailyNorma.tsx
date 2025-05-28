@@ -14,7 +14,7 @@ const DailyNorma = () => {
       </div>
       <div className={s.daily_norma}>
         <h4 className={s.daily_norma_title}>{t("user_left_daylyNorma")}</h4>
-        <p className={s.daily_norma_text}>{dayliNorma(account)} L</p>
+        <p className={s.daily_norma_text}>{dayliNorma(account).toFixed(1)} L</p>
       </div>
     </>
   );
