@@ -2,17 +2,22 @@ import s from "./VisualStatus.module.scss";
 import left_arrow from "../../assets/left_arrow.svg";
 import right_arrow from "../../assets/right_arrow.svg";
 import graph from "../../assets/grahp.svg";
-import { useSelector } from "react-redux";
-import { RootState } from "../../Store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../Store/store";
 import monthSearch from "../../Helpers/monthArray";
 import { useEffect, useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import disabledMonthBtn from "../../Helpers/disabledMonthBtn";
 import { useTranslation } from "react-i18next";
+import Graph from "../Graph/Graph";
+import { changeVisualType } from "../../Store/Slices/Main/mainSlice";
 const VisualStatus = () => {
-  const {t} = useTranslation()
-  const { time, date } = useSelector((state: RootState) => state.mainSlice);
+  const { t } = useTranslation();
+  const { time, date, visualType } = useSelector(
+    (state: RootState) => state.mainSlice
+  );
   const [targetTime, setTargetTime] = useState(time);
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     setTargetTime(time);
   }, [time]);
@@ -72,12 +77,18 @@ const VisualStatus = () => {
           >
             <img src={right_arrow} alt="right arrow" />
           </button>
-          <button className={s.inner_btns_type}>
+          <button
+            onClick={() => {
+              dispatch(changeVisualType());
+            }}
+            className={`${s.inner_btns_type} ${!visualType ? s.active : ""}`}
+          >
             <img src={graph} alt="graph" />
           </button>
         </div>
       </div>
-      <Calendar targetTime={targetTime} />
+      {!visualType && <Calendar targetTime={targetTime} />}
+      {visualType && <Graph targetTime={targetTime} />}
     </div>
   );
 };

@@ -8,6 +8,7 @@
 }
 .item {
   width: 42px;
+  max-width: 42px;
   height: 42px;
   border-radius: 50%;
   display: flex;
@@ -46,4 +47,7 @@
   width: 100%;
   text-align: center;
   margin-top: 2px;
+}
+.inner_item{
+  max-width: 44px;
 }

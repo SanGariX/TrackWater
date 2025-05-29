@@ -28,6 +28,7 @@ type initialStateType = {
     time: string;
     valueWater: string;
   };
+  readonly visualType: boolean;
 };
 type changeMessageTypePayload = {
   error?: string;
@@ -81,6 +82,7 @@ const initialState: initialStateType = {
     time: "",
     valueWater: "",
   },
+  visualType: false,
 };
 const mainSlice = createSlice({
   name: "mainSlice",
@@ -208,6 +210,9 @@ const mainSlice = createSlice({
       state.account.ava = action.payload;
       localStorage.setItem(state.account.id, JSON.stringify(state.account));
     },
+    changeVisualType: (state) => {
+      state.visualType = !state.visualType;
+    },
   },
 });
 export default mainSlice.reducer;
@@ -223,5 +228,6 @@ export const {
   deleteItemWater,
   settingAcc,
   upDateTime,
-  loadImage
+  loadImage,
+  changeVisualType
 } = mainSlice.actions;

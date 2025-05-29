@@ -19,6 +19,7 @@
     "react-hook-form": "^7.55.0",
     "react-i18next": "^15.4.1",
     "react-redux": "^9.2.0",
+    "recharts": "^2.15.3",
     "scss": "^0.2.4",
     "swiper": "^11.2.6"
   },

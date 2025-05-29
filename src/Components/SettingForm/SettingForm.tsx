@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../Store/store";
 import { settingAcc } from "../../Store/Slices/Main/mainSlice";
+import dayliNorma from "../../Helpers/dailyNorm";
 const SettingForm = () => {
   const { account } = useSelector((state: RootState) => state.mainSlice);
   const { t } = useTranslation();
@@ -163,7 +164,7 @@ const SettingForm = () => {
           <span>*</span> {t("setting_desc")}
         </div>
         <p className={s.form_right_result}>
-          {t("setting_result")} <span>{1.8} L</span>
+          {t("setting_result")} <span>{dayliNorma(account).toFixed(1)} L</span>
         </p>
       </div>
     </>
