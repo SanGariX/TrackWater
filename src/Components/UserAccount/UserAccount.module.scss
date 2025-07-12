@@ -37,7 +37,11 @@
       gap: 10px;
       align-items: center;
       justify-content: space-between;
-
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.02);
+      }
       .account_btn_text {
         font-weight: 700;
         font-size: 16px;
@@ -61,7 +65,7 @@
       }
     }
     .account_option {
-      display: none;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: start;
@@ -73,8 +77,15 @@
       width: 157px;
       top: 65px;
       z-index: 3;
+      opacity: 0;
+      transform: scaleY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
       &.open {
-        display: flex;
+        opacity: 1;
+        transform: scaleY(1);
+      }
+      &.none {
+        display: none !important;
       }
       .account_option_btn {
         display: flex;
@@ -103,6 +114,7 @@
     }
   }
 }
+
 .account_btn_arrow_image {
   transition: transform 0.3s ease;
   transform: rotate(0deg);

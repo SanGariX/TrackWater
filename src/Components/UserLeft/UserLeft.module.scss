@@ -27,8 +27,13 @@
     .daily_norma_title {
       font-size: 12px;
       color: var(--color-black);
-      opacity: .6;
+      opacity: 0.6;
       order: 2;
     }
+  }
+}
+@media (max-width: 720px) {
+  .leftbox {
+    width: 100% !important;
   }
 }

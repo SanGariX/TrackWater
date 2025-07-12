@@ -1,6 +1,10 @@
 .wrapper {
-  position: absolute;
+  position: fixed;
   z-index: 5;
+  width: fit-content;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
 }
 .water_inner {
   position: relative;
@@ -23,6 +27,7 @@
 .close_btn {
   position: absolute;
   inset: 20px 20px auto auto;
+  cursor: pointer;
 }
 .content_inner_strong {
   font-weight: 700;

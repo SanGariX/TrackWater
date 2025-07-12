@@ -13,17 +13,25 @@
   background-color: var(--color-darkblue);
   position: absolute;
   inset: auto 32px 64px auto;
-  .water_btn_box{
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  &:hover {
+    background-color: var(--color-black);
+    transform: scale(1.05);
+  }
+  .water_btn_box {
     width: 24px;
     max-width: 24px;
     min-width: 24px;
     height: 24px;
     max-height: 24px;
     min-height: 24px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
+  }
+  &:hover .water_btn_box {
+    animation: rotate 0.3s ease-in-out;
   }
   .water_btn_text {
     font-weight: 700;
@@ -34,4 +42,11 @@
     color: #fff;
   }
 }
-
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}

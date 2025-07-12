@@ -13,7 +13,6 @@ const App = () => {
   useEffect(() => {
     const enter = localStorage.getItem("user");
     if (!enter) {
-      // navigate("/");
       return;
     }
     const user = localStorage.getItem(enter);
@@ -35,12 +34,11 @@ const App = () => {
     );
     dispatch(newDate());
     dispatch(newTime());
-    // navigate("/user");
   }, []);
 
   return (
     <div
-      className="wrapper"
+      className="main_wrapper"
       style={
         {
           "--anim-duration": `${constantJSON.timeAnimationCSS}s`,

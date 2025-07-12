@@ -10,6 +10,9 @@ body {
   opacity: 1;
   transform: translateY(0px);
 }
+.main_wrapper {
+  margin-left: 0px;
+}
 .box {
   width: 670px;
   height: 740px;
@@ -17,12 +20,27 @@ body {
   padding: 30px;
 }
 .wrapper {
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+}
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }
 .hiddenElement {
   position: absolute;
@@ -38,4 +56,17 @@ body {
 .swiper-scrollbar-drag {
   background-color: #323f47;
   height: 8px;
+}
+@media screen and (max-width: 1300px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+  }
 }

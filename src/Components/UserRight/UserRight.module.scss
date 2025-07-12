@@ -1,13 +1,69 @@
-.rightbox{
+.rightbox {
   background-color: var(--color-lightgrey);
+  @media (max-width: 720px) {
+    width: 100% !important;
+  }
 }
-.settingPopup{
+.settingPopup {
   width: 100%;
   height: 100%;
-  opacity: .4;
+  opacity: 0.4;
   background-color: black;
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 3;
   cursor: pointer;
+}
+// setting
+.settingWrapper {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.settingWrapper.open {
+  opacity: 1;
+}
+.settingWrapper.none {
+  visibility: hidden;
+}
+
+// addWater
+.addWaterWrapper {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.addWaterWrapper.open {
+  opacity: 1;
+}
+.addWaterWrapper.none {
+  visibility: hidden;
+}
+// editWater
+.editWaterWrapper {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.editWaterWrapper.open {
+  opacity: 1;
+}
+.editWaterWrapper.none {
+  visibility: hidden;
+}
+// exit
+.exitWrapper {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.exitWrapper.open {
+  opacity: 1;
+}
+.exitWrapper.none {
+  visibility: hidden;
 }

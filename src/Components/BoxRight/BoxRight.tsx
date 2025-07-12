@@ -1,12 +1,12 @@
-import s from './BoxRight.module.scss'
+import s from "./BoxRight.module.scss";
 import background from "../../assets/woman.jpg";
 import customers from "../../assets/customers.png";
-import { useTranslation } from 'react-i18next';
-import SetTimeout from '../../Helpers/setTimeout';
+import { useTranslation } from "react-i18next";
+import SetTimeout from "../../Helpers/setTimeout";
 const BoxRight = () => {
   const { t } = useTranslation();
-    return (
-      <div className={`content ${SetTimeout() && "loaded"} ${s.box_right} box`}>
+  return (
+    <div className={`content ${SetTimeout() && "loaded"} ${s.box_right} box`}>
       <div className={s.customers_img_box}>
         <img
           className={s.customers_background_img}
@@ -42,14 +42,12 @@ const BoxRight = () => {
         <div className={`${s.info_grid_item2} ${s.info_grid_item}`}>
           {t("info_grid_item2")}
         </div>
-        <div
-          className={`${s["info_grid_long-item"]} ${s.info_grid_item} `}
-        >
+        <div className={`${s["info_grid_long-item"]} ${s.info_grid_item} `}>
           {t("info_grid_long-item")}
         </div>
       </div>
     </div>
-    );
-}
+  );
+};
 
 export default BoxRight;
